@@ -3,6 +3,14 @@
 ## Project Overview
 YourCart is an e-commerce sales analytics project focused on analyzing sales performance, product profitability, customer behavior, and order trends using Python, MySQL, and Power BI.
 
+**📊 Project at a Glance**
+
+- **3 datasets** — Customers, Products, and Sales
+- **551,000 records** across the three datasets after data preparation
+- **8 business questions** analyzed using MySQL
+- **3 interactive Power BI dashboard pages** — Overview, Product Analysis, and Customers & Orders
+
+
 ## Tools & Technologies
 - **Python:** Pandas, NumPy, Matplotlib, Seaborn
 - **Database:** MySQL
