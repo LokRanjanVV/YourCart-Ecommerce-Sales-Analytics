@@ -1,39 +1,130 @@
-# YourCart E-commerce Sales Analytics
+# YourCart — E-Commerce Sales Analytics
 
-## Project Overview
-YourCart is an e-commerce sales analytics project focused on analyzing sales performance, product profitability, customer behavior, and order trends using Python, MySQL, and Power BI.
+An end-to-end data analytics project using **Python, Pandas, and MySQL** to prepare e-commerce datasets, validate data quality, and investigate sales performance, profitability, customer behavior, and order trends.
 
-**📊 Project at a Glance**
+## 📌 Project Overview
 
-- **3 datasets** — Customers, Products, and Sales
-- **551,000 records** across the three datasets after data preparation
-- **8 business questions** analyzed using MySQL
-- **3 interactive Power BI dashboard pages** — Overview, Product Analysis, and Customers & Orders
+YourCart analyzes Indian e-commerce data across customer, product, and sales datasets. The project follows a practical data analyst workflow, from inspecting raw data and preparing DataFrames to validating data quality, loading datasets into MySQL, and answering business questions using SQL.
 
+The goal is to transform raw transactional data into structured information that can support business analysis and decision-making.
 
-## Tools & Technologies
-- **Python:** Pandas, NumPy, Matplotlib, Seaborn
-- **Database:** MySQL
-- **Visualization:** Power BI
-- **Notebook:** Jupyter Notebook
+## 🎯 Business Objectives
 
-## Project Structure
-- `data/` — Customer, product, and sales CSV datasets
-- `python/` — Jupyter Notebook for data preparation and quality checks
-- `sql/` — SQL scripts for business analysis
-- `powerbi/` — Power BI report, dashboard screenshots, and PDF portfolio
+- Evaluate total sales, profit, order volume, and average order value.
+- Identify top-performing products and product categories.
+- Compare sales across customer segments, states, and sales channels.
+- Analyze monthly sales and profit trends.
+- Understand payment-method preferences and order-status patterns.
+- Investigate missing values, duplicate records, invalid values, and relationship inconsistencies.
 
-## Power BI Dashboard
-The dashboard contains three pages:
-1. **Overview** — Sales, profit, order trends, and category performance
-2. **Product Analysis** — Product sales, profitability, and quantity analysis
-3. **Customers & Orders** — Customer demographics, geographic trends, and payment preferences
+## 🛠️ Tools & Technologies
 
-## Project Workflow
-1. Prepare and inspect datasets using Python and Pandas.
-2. Import datasets into MySQL.
-3. Analyze business questions using SQL.
-4. Visualize findings using Power BI.
+- **Python** — Data inspection and preparation
+- **Pandas** — DataFrames, duplicate handling, missing-value analysis, transformations, and validation
+- **MySQL** — Relational data analysis and business queries
+- **MySQL Workbench** — SQL execution and database exploration
+- **Git & GitHub** — Version control and project documentation
 
-## Project Goal
-To demonstrate practical data analytics skills, from data preparation and SQL analysis to interactive dashboard reporting.
+## 📂 Dataset Overview
+
+| Dataset | Original row count | Purpose |
+|---|---:|---|
+| Customers | 50,150 | Customer attributes and segmentation |
+| Products | 1,000 | Product details, categories, and pricing |
+| Sales | 500,500 | Order transactions and sales performance |
+
+## 🧹 Data Cleaning & Preparation
+
+Python and Pandas were used to inspect and prepare the datasets before business analysis.
+
+### 1. Data inspection and DataFrame preparation
+- Loaded the customer, product, and sales datasets into Pandas DataFrames.
+- Inspected dataset dimensions, column names, data types, missing values, and duplicate records.
+- Created working DataFrame copies during preparation to separate analysis operations from the original loaded data.
+
+### 2. Duplicate-record analysis
+
+| Dataset | Original rows | Duplicate rows identified | Rows after duplicate removal |
+|---|---:|---:|---:|
+| Customers | 50,150 | 150 | 50,000 |
+| Sales | 500,500 | 500 | 500,000 |
+
+These counts refer to full-row duplicates identified during the workflow.
+
+### 3. Missing-value analysis
+
+| Column | Missing values identified |
+|---|---:|
+| Sales — `Customer_ID` | 999 |
+| Sales — `Quantity` | 1,501 |
+| Sales — `Discount` | 3,000 |
+| Sales — `Payment_Method` | 6,004 |
+| Sales — `Order_Status` | 1,000 |
+| Products — `Cost_Price_INR` | 40 |
+
+These are identified missing-value counts. The final treatment of each column should reflect the actual notebook operations.
+
+### 4. Product and relationship validation
+
+- Checked the consistency of product IDs between sales and product datasets using Pandas.
+- Identified **31 distinct `Product_ID` values** in sales records that were not present in the products dataset.
+- Checked customer IDs across sales and customer datasets; the validation showed **49,999 distinct non-missing customer IDs** in sales matching the customer dataset.
+- Identified negative product base prices, including a minimum value of approximately **−₹22,965.55** in the inspected data.
+- Retained missing values and unmatched customer/product IDs without further modification in the final validation section shown in the notebook.
+
+### 5. Exported datasets
+
+Exported the prepared DataFrames to CSV files for downstream SQL analysis:
+
+- `YC_cleaned_customers.csv`
+- `YC_cleaned_products.csv`
+- `YC_cleaned_sales.csv`
+
+## 🗄️ MySQL Business Analysis
+
+SQL queries were developed to investigate nine business areas:
+
+1. **Overall performance** — Total sales, total profit, total orders, and average order value.
+2. **Monthly trends** — Changes in sales and profit over time.
+3. **Category performance** — Sales and profit by product category.
+4. **Top products** — Products ranked by total sales.
+5. **Customer segments** — Revenue contribution by customer segment.
+6. **Regional performance** — States ranked by sales.
+7. **Payment methods** — Order counts by payment method.
+8. **Sales channels** — Revenue generated by each channel.
+9. **Order issues** — Counts of cancelled and returned sales records.
+
+## 🔄 Project Workflow
+
+**Raw CSV files → Python/Pandas inspection → DataFrame preparation → Duplicate and missing-value analysis → Data-quality validation → MySQL data loading → SQL business analysis**
+
+## 📈 Key Project Outcomes
+
+- Examined **500,500 sales rows**, **50,150 customer rows**, and **1,000 product rows**.
+- Identified **650 full-row duplicate records** across the customer and sales datasets combined.
+- Documented missing values across sales and product columns.
+- Identified **31 distinct unmatched product IDs** in the sales dataset.
+- Investigated negative product prices and customer/product relationship consistency.
+- Developed SQL analyses covering sales, profitability, products, customers, geography, channels, payment methods, and order statuses.
+
+## 📁 Repository Structure
+
+- `Data/` — Original and prepared CSV datasets
+- `python/` — Python/Pandas analysis notebook
+- `MySql/` — SQL business-question queries
+- `PowerBI/` — Power BI report and dashboard files
+  
+
+## 💡 Skills Demonstrated
+
+Python, Pandas, data cleaning, exploratory data analysis, data-quality validation, duplicate analysis, missing-value investigation, relational data analysis, SQL joins, aggregations, and business-focused analytical thinking.
+
+## 🚀 How to Explore
+
+1. Browse the Python notebook to understand the data preparation and validation workflow.
+2. Review the SQL scripts to explore the business questions and queries.
+3. Inspect the prepared datasets and available Power BI files in the repository.
+
+---
+
+*YourCart is a portfolio project demonstrating a practical approach to data preparation, validation, and business-oriented e-commerce analysis.*
